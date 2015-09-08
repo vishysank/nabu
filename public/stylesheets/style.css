@@ -1,0 +1,87 @@
+* {
+  font-family: 'Alegreya Sans', sans-serif;
+}
+
+body {
+  background-color: #EFF1ED;
+  padding: 0px;
+  margin: 0px;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.mainSection {
+  padding: 10px;
+}
+
+.headerNav {
+  background-color: #111D4A;
+  height: 50px;
+  width: 100%;
+  padding: 5px;
+  box-sizing: border-box;
+}
+
+.headerNavElement {
+  height: 100%;
+  display: inline-block;
+  color: white;
+  padding-left: 10px;
+  box-sizing: border-box;
+  vertical-align: middle;
+}
+
+.headerNavElement h1 {
+  position: relative;
+  top: 0%;
+  transform: translateY(-50%);
+}
+
+.headerNavElement button, input[type="submit"] {
+  height: 100%;
+  border: 0;
+  padding:10px;
+  font-size: 16px;
+  font-weight: 300;
+  border-radius: 5px;
+  background-color: #68B684;
+  color: white;
+}
+
+img {
+  max-height: 100%;
+}
+
+.right {
+  float: right;
+}
+
+label {
+  height: 100%;
+  font-size: 24px;
+  width: 10%;
+  display: inline-block;
+}
+
+input[type='text'], textarea {
+  width: 30%;
+  padding-left: 10px;
+  margin: 0px;
+  border: 0px;
+  font-size: 18px;
+  vertical-align: middle;
+}
+
+input[type='text'] {
+  height: 30px;
+}
+
+textarea {
+  height: 90px;
+}
+
+form div {
+  padding: 5px;
+}

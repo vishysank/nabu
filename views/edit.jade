@@ -1,0 +1,21 @@
+extends layout
+
+block content
+  div.mainSection
+    h1 Add a New API
+    form(action="/index" method="POST")
+      div
+        label(for="apiName") Name : 
+        input(type="text" name="apiName" id="apiName")
+      div
+        label(for="apiOwner") Owner : 
+        input(type="text" name="apiOwner" id="apiOwner")
+      div
+        label(for="apiPath") Path : 
+        input(type="text" name="apiPath" id="apiPath")
+      div
+        label(for="apiToken") Token : 
+        input(type="text" name="apiToken" id="apiToken")
+      div
+        input(type="submit" value="Add New API")
+        
