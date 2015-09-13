@@ -12,6 +12,10 @@ a {
   color: #00B7FF;
 }
 
+h2 {
+  margin: 0px;
+}
+
 .mainSection {
   padding: 10px;
 }
@@ -39,7 +43,7 @@ a {
   transform: translateY(-50%);
 }
 
-.headerNavElement button, input[type="submit"] {
+button, .headerNavElement button, input[type="submit"] {
   height: 100%;
   border: 0;
   padding:10px;
@@ -48,6 +52,16 @@ a {
   border-radius: 5px;
   background-color: #68B684;
   color: white;
+}
+
+.apiListSection {
+  background-color: white;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.apiListSection button {
+  margin-right: 5px;
 }
 
 img {

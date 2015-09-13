@@ -3,6 +3,12 @@ extends layout
 block content
   div.mainSection
     h1 List of APIs with Documentation
-  //  each val in apiList
-    //  div.apiListSection
-      //  h2= val.api_name
+    each val in apiList
+      div 
+        div.apiListSection
+          h2= val.api_name+" - managed by "+val.api_owner
+          p= "Added/Edited Last on - "+val.insert_datetime 
+          p= val.api_desc
+          a(href="/edit/"+val.id)
+            button Edit this API
+          button View Documentation
