@@ -5,20 +5,20 @@ block content
     h1 Add a New API
     form(action="/edit/"+apiDetails.id method="POST")
       div
-        label(for="apiName") Name : 
-        input(type="text" name="apiName" id="apiName" value=apiDetails.api_name)
+        label.newAPIFormElement(for="apiName") Name : 
+        input.newAPIFormElement(type="text" name="apiName" id="apiName" value=apiDetails.api_name)
       div
-        label(for="apiOwner") Owner : 
-        input(type="text" name="apiOwner" id="apiOwner" value=apiDetails.api_owner)
+        label.newAPIFormElement(for="apiOwner") Owner : 
+        input.newAPIFormElement(type="text" name="apiOwner" id="apiOwner" value=apiDetails.api_owner)
       div
-        label(for="apiPath") Path : 
-        input(type="text" name="apiPath" id="apiPath" value=apiDetails.api_path)
+        label.newAPIFormElement(for="apiPath") Path : 
+        input.newAPIFormElement(type="text" name="apiPath" id="apiPath" value=apiDetails.api_path)
       div
-        label(for="apiToken") Token : 
-        input(type="text" name="apiToken" id="apiToken" value=apiDetails.api_token)
+        label.newAPIFormElement(for="apiToken") Token : 
+        input.newAPIFormElement(type="text" name="apiToken" id="apiToken" value=apiDetails.api_token)
       div
-        label(for="apiDesc") Description :
-        textarea(id="apiDesc" name="apiDesc")= apiDetails.api_desc
+        label.newAPIFormElement(for="apiDesc") Description :
+        textarea.newAPIFormElement(id="apiDesc" name="apiDesc")= apiDetails.api_desc
       div
-        input(type="submit" value="Add New API")
+        input.newAPIFormElement(type="submit" value="Add New API")
         

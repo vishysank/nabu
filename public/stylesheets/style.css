@@ -4,12 +4,15 @@
 
 body {
   background-color: #EFF1ED;
-  padding: 0px;
-  margin: 0px;
 }
 
+body {
+  margin: 0px;
+  padding: 0px;
+}
 a {
   color: #00B7FF;
+  text-decoration: none;
 }
 
 h2 {
@@ -17,7 +20,9 @@ h2 {
 }
 
 .mainSection {
-  padding: 10px;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 10px;
 }
 
 .headerNav {
@@ -72,14 +77,14 @@ img {
   float: right;
 }
 
-label {
+label.newAPIFormElement {
   height: 100%;
   font-size: 24px;
   width: 10%;
   display: inline-block;
 }
 
-input[type='text'], textarea {
+input[type='text'].newAPIFormElement, textarea.newAPIFormElement {
   width: 30%;
   padding-left: 10px;
   margin: 0px;

@@ -25,6 +25,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/swagger', express.static('./node_modules/swagger-ui/dist'));
+app.use('/lib', express.static('./lib'));
 app.use('/', routes);
 app.use('/users', users);
 

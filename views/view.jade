@@ -1,0 +1,7 @@
+extends layout
+
+block content
+  div.mainSection.swagger-section
+    div#swagger-ui-container.swagger-ui-wrap
+    script.
+      uiRender(!{JSON.stringify(apiDetails)})
