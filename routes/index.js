@@ -1,16 +1,24 @@
 var express = require('express');
-var router = express.Router();
 var pg = require('pg');
+var router = express.Router();
+
 var connectionString = process.env.DB_NAME;
+
 var dbCalls = require('../lib/dbCalls');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
   var pgQuery = 'SELECT * from api_details';
+
   dbCalls.dbConnection(connectionString)
-  .then(dbCalls.selectQuery.bind(null, pgQuery))
+  .then(dbCalls.dbQuery.bind(null, pgQuery, ""))
   .then(function (apiList) {
-    res.render('index', {apiList: apiList});
+    res.render('index', {
+      apiList: apiList
+    });
+  })
+  .catch(function(err) {
+    console.log('error', err);
   });
 });
 
@@ -23,12 +31,16 @@ router.get('/new', function(req, res, next) {
 router.get('/view/:id', function (req, res, next) {
   var id = req.params.id;
   var pgQuery = 'SELECT * from api_auth WHERE id = $1';
+
   dbCalls.dbConnection(connectionString)
   .then(dbCalls.dbQuery.bind(null, pgQuery, [id]))
   .then(function(results){
     res.render('view', {
       apiDetails: results[0]
     });
+  })
+  .catch(function(err) {
+    console.log('error', err);
   });
 
 });
@@ -36,13 +48,15 @@ router.get('/view/:id', function (req, res, next) {
 /* GET edit page for specific api*/
 router.get('/edit/:id', function (req, res, next) {
   var id = req.params.id;
-  //var pgQuery = 'SELECT * from api_details a, api_auth b WHERE a.id = b.id';
   var pgQuery = 'SELECT * from api_details a, api_auth b where a.id = b.id AND a.id = $1';
+
   dbCalls.dbConnection(connectionString)
   .then(dbCalls.dbQuery.bind(null, pgQuery, [id]))
   .then(function(results){
-    console.log(results[0]);
     res.render('edit', {apiDetails: results[0]});
+  })
+  .catch(function(err) {
+    console.log('error', err);
   });
 });
 
@@ -61,6 +75,9 @@ router.post('/edit/:id', function(req, res, next){
   .then(dbCalls.dbQuery.bind(null, pgQueryAPIAuthUpdate, apiAuthUpdateValues))
   .then(function () {
     res.redirect("/");
+  })
+  .catch(function(err) {
+    console.log('error', err);
   });
 });
 
@@ -82,6 +99,9 @@ router.post('/', function(req, res, next){
   .then(dbCalls.dbQuery.bind(null, pgQueryAPIAuthInsert, apiAuthInsertValues))
   .then(function () {
     res.redirect("/");
+  })
+  .catch(function(err) {
+    console.log('error', err);
   });
 });
 
