@@ -1,5 +1,4 @@
 function uiRender (apiDetails) {
-
   var swaggerUi = new SwaggerUi({
     url:apiDetails.api_path,
     dom_id:"swagger-ui-container"

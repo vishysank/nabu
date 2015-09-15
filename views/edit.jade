@@ -2,7 +2,7 @@ extends layout
 
 block content
   div.mainSection
-    h1 Add a New API
+    h1 Edit API Details
     form(action="/edit/"+apiDetails.id method="POST")
       div
         label.newAPIFormElement(for="apiName") Name : 
@@ -20,5 +20,5 @@ block content
         label.newAPIFormElement(for="apiDesc") Description :
         textarea.newAPIFormElement(id="apiDesc" name="apiDesc")= apiDetails.api_desc
       div
-        input.newAPIFormElement(type="submit" value="Add New API")
+        input.newAPIFormElement(type="submit" value="Edit API Details")
         
