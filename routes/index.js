@@ -5,6 +5,18 @@ var router = express.Router();
 var connectionString = process.env.DB_NAME;
 
 var dbCalls = require('../lib/dbCalls');
+var validations = require('../lib/validations.js');
+
+// function authCheck (req, res, next) {
+//   if (!req.session.userName) {
+//     console.log(req.session);
+//     res.redirect('/login');
+//     } else {
+//     next();
+//   }
+// }
+
+router.use(validations.authCheck);
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -104,6 +116,8 @@ router.post('/', function(req, res, next){
     console.log('error', err);
   });
 });
+
+
 
 
 

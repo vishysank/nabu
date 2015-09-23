@@ -4,12 +4,22 @@ var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
+var cookieSession = require('cookie-session');
 var bodyParser = require('body-parser');
 
 
 var routes = require('./routes/index');
+var login = require('./routes/login');
 
 var app = express();
+
+app.set('trust proxy', 1); // trust first proxy
+
+//Set cookie session
+app.use(cookieSession({
+  name: 'session',
+  keys: [process.env.COOKIE_SESSION_1, process.env.COOKIE_SESSION_2]
+}));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -25,7 +35,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/swagger', express.static('./node_modules/swagger-ui/dist'));
 app.use('/', routes);
-
+app.use('/login', login);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

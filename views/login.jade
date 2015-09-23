@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  div.mainSection
+    h1 Add a New API
+    form(action="/login" method="POST")
+      div
+        label.newAPIFormElement(for="userName") User Name : 
+        input.newAPIFormElement(type="text" name="userName" id="userName")
+      div
+        label.newAPIFormElement(for="password") Password : 
+        input.newAPIFormElement(type="text" name="password" id="password")
+      div
+        input.newAPIFormElement(type="submit" value="Login")
+        
+        
