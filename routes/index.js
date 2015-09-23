@@ -1,20 +1,9 @@
 var express = require('express');
 var pg = require('pg');
 var router = express.Router();
-
-var connectionString = process.env.DB_NAME;
-
 var dbCalls = require('../lib/dbCalls');
 var validations = require('../lib/validations.js');
-
-// function authCheck (req, res, next) {
-//   if (!req.session.userName) {
-//     console.log(req.session);
-//     res.redirect('/login');
-//     } else {
-//     next();
-//   }
-// }
+var connectionString = process.env.DB_NAME;
 
 router.use(validations.authCheck);
 
@@ -76,20 +65,39 @@ router.get('/edit/:id', function (req, res, next) {
 router.post('/edit/:id', function(req, res, next){
   var editAPIDetails = req.body;
   var id = req.params.id;
+  var pgQuery = 'SELECT * from api_details a, api_auth b where a.id = b.id AND a.id = $1';
   var pgQueryAPIDetailUpdate = 'UPDATE api_details SET api_name = $2, api_desc = $3, api_owner = $4 WHERE id = $1';
   var pgQueryAPIAuthUpdate = 'UPDATE api_auth SET api_path = $2, api_token = $3 WHERE id = $1';
   var apiDetailUpdateValues = [id, editAPIDetails.apiName, editAPIDetails.apiDesc, editAPIDetails.apiOwner];
   var apiAuthUpdateValues = [id, editAPIDetails.apiPath, editAPIDetails.apiToken];
+  var apiCheck;
 
-  dbCalls.dbConnection(connectionString)
-  .then(dbCalls.dbQuery.bind(null, pgQueryAPIDetailUpdate, apiDetailUpdateValues))
-  .then(dbCalls.dbConnection.bind(null, connectionString))
-  .then(dbCalls.dbQuery.bind(null, pgQueryAPIAuthUpdate, apiAuthUpdateValues))
-  .then(function () {
-    res.redirect("/");
-  })
-  .catch(function(err) {
-    console.log('error', err);
+  validations.apiCheck(editAPIDetails)
+  .then(function (apiCheck) {
+    if (apiCheck === 200) {
+      dbCalls.dbConnection(connectionString)
+      .then(dbCalls.dbQuery.bind(null, pgQueryAPIDetailUpdate, apiDetailUpdateValues))
+      .then(dbCalls.dbConnection.bind(null, connectionString))
+      .then(dbCalls.dbQuery.bind(null, pgQueryAPIAuthUpdate, apiAuthUpdateValues))
+      .then(function () {
+        res.redirect("/");
+      })
+      .catch(function(err) {
+        console.log('error', err);
+      });
+    } else {
+      dbCalls.dbConnection(connectionString)
+      .then(dbCalls.dbQuery.bind(null, pgQuery, [id]))
+      .then(function(results){
+        res.render('edit', {
+          apiDetails: results[0],
+          apiError: 'Error: '+apiCheck
+        });
+      })
+      .catch(function(err) {
+        console.log('error', err);
+      });
+    }
   });
 });
 
@@ -115,6 +123,12 @@ router.post('/', function(req, res, next){
   .catch(function(err) {
     console.log('error', err);
   });
+});
+
+router.get('/logout', function(req, res, next) {
+  req.session.userName = null;
+  req.session.password = null;
+  res.redirect('/login');
 });
 
 

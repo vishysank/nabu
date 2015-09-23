@@ -4,6 +4,8 @@ block content
   div.mainSection
     h1 Edit API Details
     form(action="/edit/"+apiDetails.id method="POST")
+      if apiError
+        div.error= apiError
       div
         label.newAPIFormElement(for="apiName") Name : 
         input.newAPIFormElement(type="text" name="apiName" id="apiName" value=apiDetails.api_name)

@@ -31,7 +31,12 @@ html
       a(href="/")
         div.headerNavElement 
           h1.test nabu
+      if !loginButtonFlag
+        a(href="/logout")
+          div.headerNavElement.right
+            button.red Logout
       a(href="/new")
         div.headerNavElement.right
           button Add an API
+      
     block content
