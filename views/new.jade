@@ -8,16 +8,16 @@ block content
         div.error= apiError
         div
           label.newAPIFormElement(for="apiName") Name : 
-          input.newAPIFormElement(type="text" name="apiName" id="apiName" value=apiDetails.apiName)
+          input.newAPIFormElement(type="text" name="apiName" id="apiName" value=apiDetails.apiName required)
         div
           label.newAPIFormElement(for="apiOwner") Owner : 
-          input.newAPIFormElement(type="text" name="apiOwner" id="apiOwner" value=apiDetails.apiOwner)
+          input.newAPIFormElement(type="text" name="apiOwner" id="apiOwner" value=apiDetails.apiOwner required)
         div
           label.newAPIFormElement(for="apiPath") Path : 
-          input.newAPIFormElement(type="text" name="apiPath" id="apiPath" value=apiDetails.apiPath)
+          input.newAPIFormElement(type="text" name="apiPath" id="apiPath" value=apiDetails.apiPath required)
         div
           label.newAPIFormElement(for="apiToken") Token : 
-          input.newAPIFormElement(type="text" name="apiToken" id="apiToken" value=apiDetails.apiToken)
+          input.newAPIFormElement(type="text" name="apiToken" id="apiToken" value=apiDetails.apiToken required)
         div
           label.newAPIFormElement(for="apiDesc") Description :
           textarea.newAPIFormElement(id="apiDesc" name="apiDesc" value=apiDetails.apiDesc)
