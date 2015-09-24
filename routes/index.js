@@ -16,14 +16,14 @@ router.get('/', function (req, res, next) {
       apiList: apiList
     })
   })
-  .catch(function (e) {
-    console.log(e)
+  .catch(function (err) {
+    console.log(err)
   })
 })
 
 /* GET new page. */
 router.get('/new', function (req, res, next) {
-  res.render('new', {})
+  res.render('new', {apiDetails: {}})
 })
 
 /* GET api documentation page. */
@@ -37,8 +37,8 @@ router.get('/view/:id', function (req, res, next) {
       apiDetails: results[0]
     })
   })
-  .catch(function (e) {
-    console.log(e)
+  .catch(function (err) {
+    console.log(err)
   })
 })
 
@@ -51,8 +51,8 @@ router.get('/edit/:id', function (req, res, next) {
   .then(function (results) {
     res.render('edit', {apiDetails: results[0]})
   })
-  .catch(function (e) {
-    console.log(e)
+  .catch(function (err) {
+    console.log(err)
   })
 })
 
@@ -73,8 +73,8 @@ router.post('/edit/:id', function (req, res, next) {
       .then(function () {
         res.redirect('/')
       })
-      .catch(function (e) {
-        console.log(e)
+      .catch(function (err) {
+        console.log(err)
       })
     } else {
       dbCalls.dbConnection(connectionString)
@@ -85,8 +85,8 @@ router.post('/edit/:id', function (req, res, next) {
           apiError: "uhhhhh...something's wrong : " + apiCheck
         })
       })
-      .catch(function (e) {
-        console.log(e)
+      .catch(function (err) {
+        console.log(err)
       })
     }
   })
@@ -112,8 +112,8 @@ router.post('/', function (req, res, next) {
       .then(function () {
         res.redirect('/')
       })
-      .catch(function (e) {
-        console.log(e)
+      .catch(function (err) {
+        console.log(err)
       })
     } else {
       res.render('new', {
@@ -122,8 +122,8 @@ router.post('/', function (req, res, next) {
       })
     }
   })
-  .catch(function (e) {
-    console.log(e)
+  .catch(function (err) {
+    console.log(err)
   })
 })
 
