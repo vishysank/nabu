@@ -1,4 +1,4 @@
-<img src="./public/images/swagger_icon.png" alt="Drawing" style="height: 100px;"/>
+<img src="./public/images/swagger_icon.png" alt="Drawing" style="height: 100px; width: 100px;"/>
 <img src="./public/images/nabu_icon.png" alt="Drawing" style="height: 100px;"/>
 
 # Nabu
