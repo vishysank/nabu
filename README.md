@@ -1,5 +1,5 @@
-<img src="./public/images/swagger_icon.png" alt="Drawing" style="width: 100px;"/>
-<img src="./public/images/nabu_icon.png" alt="Drawing" style="width: 145px;"/>
+<img src="./public/images/swagger_icon.png" alt="Drawing" style="height: 100px;"/>
+<img src="./public/images/nabu_icon.png" alt="Drawing" style="height: 100px;"/>
 
 # Nabu
 Nabu was the ancient Babylonian of writing and scribing. Nabu is an application that helps dev team compile the various APIs they use/create and be able to view the various endpoints of these APIs in a swagger UI format, enabling for simple and easy documentation.
