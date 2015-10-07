@@ -1,4 +1,4 @@
-FROM mhart/alpine-node:0.12
+FROM mhart/alpine-node:2.4.0
 MAINTAINER vishySank
 
 ENV APP_DIR=/app/nabu
