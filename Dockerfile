@@ -1,16 +1,26 @@
-FROM    centos:centos6
+FROM mhart/alpine-node:0.12
+MAINTAINER vishySank
 
-# Enable EPEL for Node.js
-RUN     rpm -Uvh http://download.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm
-# Install Node.js and npm
-RUN     yum install -y npm
+ENV APP_DIR=/app/nabu
 
-# Bundle app source
-COPY . /src
+RUN apk add --update-cache make gcc g++ python git openssh-client postgresql-client \
+    && npm config set spin=false \
+    && npm install -g npm@latest \
+    && npm cache clear \
+    && mkdir -p ${APP_DIR}
 
-# Install app dependencies
-RUN cd /src; npm install
+WORKDIR ${APP_DIR}
+COPY package.json ${APP_DIR}/
+RUN npm install --production
+COPY . ${APP_DIR}
 
-EXPOSE  3000
+RUN apk del make gcc g++ python git \
+    && rm -rf /tmp/* /var/cache/apk/* /root/.npm /root/.node-gyp \
+    && adduser -h ${APP_DIR} -s /bin/ash -D deploy \
+    && chown -R deploy ${APP_DIR}
 
-CMD ["node", "/src/bin/www"]
+USER deploy
+
+EXPOSE 3000
+
+CMD ["npm", "start"]
