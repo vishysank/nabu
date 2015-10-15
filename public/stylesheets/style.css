@@ -84,7 +84,7 @@ label.newAPIFormElement {
   display: inline-block;
 }
 
-input[type='text'].newAPIFormElement, textarea.newAPIFormElement {
+input[type='text'].newAPIFormElement, input[type='password'], textarea.newAPIFormElement {
   width: 30%;
   padding-left: 10px;
   margin: 0px;
@@ -93,7 +93,7 @@ input[type='text'].newAPIFormElement, textarea.newAPIFormElement {
   vertical-align: middle;
 }
 
-input[type='text'] {
+input[type='text'], input[type='password'] {
   height: 30px;
 }
 
