@@ -60,7 +60,7 @@ router.get('/edit/:id', function (req, res, next) {
 router.post('/edit/:id', function (req, res, next) {
   var editAPIDetails = req.body
   var id = req.params.id
-  var apiDetailUpdateValues = [id, editAPIDetails.apiName, editAPIDetails.apiDesc, editAPIDetails.apiOwner]
+  var apiDetailUpdateValues = [id, editAPIDetails.apiName, editAPIDetails.apiDesc, editAPIDetails.apiOwner, new Date()]
   var apiAuthUpdateValues = [id, editAPIDetails.apiPath, editAPIDetails.apiToken]
 
   validations.apiCheck(editAPIDetails)
