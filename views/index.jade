@@ -2,7 +2,7 @@ extends layout
 
 block content
   div.mainSection
-    h1 List of APIs with Documentation
+    h1= "List of APIs with Documentation - "+apiList.length
     each val in apiList
       div 
         div.apiListSection
