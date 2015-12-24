@@ -92,6 +92,37 @@ router.post('/edit/:id', function (req, res, next) {
   })
 })
 
+/* POST to delete API details*/
+router.post('/del/:id', function (req, res, next) {
+  var id = req.params.id
+  var apiDetailUpdateValues = [id]
+  var apiAuthUpdateValues = [id]
+
+  dbCalls.dbConnection(connectionString)
+  .then(dbCalls.dbQuery.bind(null, sql.delete.apiDetails, apiDetailUpdateValues))
+  .then(dbCalls.dbConnection.bind(null, connectionString))
+  .then(dbCalls.dbQuery.bind(null, sql.delete.apiAuth, apiAuthUpdateValues))
+  .then(function () {
+    res.redirect('/')
+  })
+  .catch(function (err) {
+    console.log(err)
+  })
+})
+
+/* POST to delete API details*/
+router.get('/del/:id', function (req, res, next) {
+  var id = req.params.id
+  var apiOwner = req.query.apiOwner
+  var apiName = req.query.apiName
+  console.log(req.query)
+  res.render ('delete', {
+    id: id,
+    apiOwner: apiOwner,
+    apiName: apiName
+  })
+})
+
 /* Post for adding a new API page*/
 router.post('/', function (req, res, next) {
   var newAPIDetails = req.body
