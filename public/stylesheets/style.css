@@ -108,3 +108,11 @@ form div {
 .error {
   color: red;
 }
+
+form {
+  display: inline
+}
+
+.deleteClass {
+  background-color: rgb(154, 14, 48);
+}

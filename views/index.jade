@@ -13,3 +13,7 @@ block content
             button Edit this API
           a(href="/view/"+val.id)
             button View Documentation
+          form(action="/del/"+val.id method="GET")
+            input(type="hidden" name="apiName" value=val.api_name)
+            input(type="hidden" name="apiOwner" value=val.api_owner)
+            button.deleteClass(type="submit") Delete API Details

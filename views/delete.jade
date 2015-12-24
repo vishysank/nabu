@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  div.mainSection
+    h1= "Delete API"
+    div 
+      div.apiListSection
+        h2= apiName+" - managed by "+apiOwner
+        p= "Are you sure you want to delete this API ?"
+        a(href="/")
+          button Cancel
+        form(action="/del/"+id method="POST")
+          button.deleteClass(type="submit") Delete API Details
