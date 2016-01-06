@@ -48,17 +48,36 @@ touch .env
 ```
 
 In the .env file, post the following environment variables, and adjust the placeholders appropriately
+
 ```
-DB_NAME=pg://_pgUserName:_pgPassword@localhost/nabu
+DB_NAME=pg://vishwam.sankar:basically@localhost/nabu
 COOKIE_SESSION_1=_randomKey1
 COOKIE_SESSION_2=_randomKey2
+
+# the answers to these fields must be 'yes' or 'no'
+BASIC_AUTH=yes
+GITHUB_AUTH=yes
+
+# if the value of BASIC_AUTH is no, set all of the variables below to none
 TEAM_USERNAME=_userName
 TEAM_PASSWORD=_password
+
+# if the value of GITHUB_AUTH is no, set all the below variables to none
+GITHUB_ORG=githubOrg
+GITHUB_API_ACCESS_TOKEN=_githubAPIToken
+GITHUB_APP_CLIENT_ID=_githubClientId
+GITHUB_APP_CLIENT_SECRET=_githubClientSecret
+GITHUB_APP_CALLBACK_URL=_githubCallback
 ```
 
 The placeholders in the above code are :
-* _pgUserName: The username used to access PostgresDB
-* _pgPassword: The password used to access PostgresDB
-* _randomkey1: The first of two random keys that are used to encrypt session key. Choose any value that suits you
-* _userName: The team username you want to use for the basic auth to access the application.
-* _password: the team password you want to use for the basic auth to access the application
+* **_pgUserName:** The username used to access PostgresDB
+* **_pgPassword:** The password used to access PostgresDB
+* **_randomkey1:** The first of two random keys that are used to encrypt session key. Choose any value that suits you
+* **_userName:** The team username you want to use for the basic auth to access the application.
+* **_password:** the team password you want to use for the basic auth to access the application
+* **_githubOrg:** The specific github org that you want to restrict github based login to. Currently only supports one org.
+* **_githubAPIToken:** The access token to access the github API
+* **_githubClientId:** the clientID provided when you register your nabu application with Github.
+* **_githubClientSecret:** the secret provided when you register your nabu application with Github.
+* **_githubCallback:** the callback URL you specify when you register your nabu application with Github.

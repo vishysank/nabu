@@ -4,13 +4,19 @@ var validations = require('../lib/validations.js')
 
 /* Login*/
 router.get('/', function (req, res, next) {
-  if (req.session.userName) {
-    res.redirect('/')
-  } else {
+    var authError
+
+    if (req.session.githubOrgPermissionsStatus && req.session.githubOrgPermissionsStatus !== 204) {
+      authError = "You're Github Account does not belong to the Organization - " + process.env.GITHUB_ORG + ". Access is restricted to members of this organization"
+    }
+
     res.render('login', {
-      loginButtonFlag: 'off'
+      authError: authError,
+      loginButtonFlag: 'off',
+      basicAuth: process.env.BASIC_AUTH,
+      githubAuth: process.env.GITHUB_AUTH
     })
-  }
+  // }
 })
 
 router.post('/', function (req, res, next) {
@@ -20,11 +26,14 @@ router.post('/', function (req, res, next) {
   if (authError === '') {
     req.session.userName = credentials.userName
     req.session.password = credentials.password
-    res.redirect('/')
+    var path = '/' + credentials.userName
+    res.redirect(path)
   } else {
     res.render('login', {
       authError: authError,
-      loginButtonFlag: 'off'
+      loginButtonFlag: 'off',
+      basicAuth: process.env.BASIC_AUTH,
+      githubAuth: process.env.GITHUB_AUTH
     })
   }
 })
