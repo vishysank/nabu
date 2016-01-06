@@ -3,12 +3,14 @@ var router = express.Router()
 var dbCalls = require('../lib/dbCalls')
 var validations = require('../lib/validations.js')
 var sql = require('../lib/pgQuery.js')
+var auth = require('../lib/auth.js')
 var connectionString = process.env.DB_NAME
 
-router.use(validations.authCheck)
+router.use(auth.ensureAuthenticated)
+
 
 /* GET home page. */
-router.get('/', function (req, res, next) {
+router.get('/:userName?', function (req, res, next) {
   dbCalls.dbConnection(connectionString)
   .then(dbCalls.dbQuery.bind(null, sql.select.apiList, ''))
   .then(function (apiList) {
@@ -22,7 +24,7 @@ router.get('/', function (req, res, next) {
 })
 
 /* GET new page. */
-router.get('/new', function (req, res, next) {
+router.get('/new/api', function (req, res, next) {
   res.render('new', {apiDetails: {}})
 })
 
@@ -115,7 +117,7 @@ router.get('/del/:id', function (req, res, next) {
   var id = req.params.id
   var apiOwner = req.query.apiOwner
   var apiName = req.query.apiName
-  console.log(req.query)
+
   res.render ('delete', {
     id: id,
     apiOwner: apiOwner,
@@ -158,9 +160,10 @@ router.post('/', function (req, res, next) {
   })
 })
 
-router.get('/logout', function (req, res, next) {
+router.get('/user/logout', function (req, res, next) {
   req.session.userName = null
   req.session.password = null
+  req.logout()
 
   res.redirect('/login')
 })

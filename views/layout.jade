@@ -32,10 +32,12 @@ html
         div.headerNavElement 
           h1 nabu
       if !loginButtonFlag
-        a(href="/logout")
+        a(href="/user/logout")
           div.headerNavElement.right
             button Logout
-      a(href="/new")
+        a(href="/new/api")
+          div.headerNavElement.right
+            button Add an API
         div.headerNavElement.right
-          button Add an API
+          iframe(src="http://ghbtns.com/github-btn.html?user=vishysank&repo=nabu&type=watch&count=true&size=large" frameborder="0" scrolling="0" allowTransparency="true")
     block content

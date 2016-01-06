@@ -19,6 +19,17 @@ h2 {
   margin: 0px;
 }
 
+iframe {
+  width: 120px;
+  height:50px;
+  margin-top: 5px;
+}
+
+.githubButton {
+  height: 100%;
+  width: auto;
+}
+
 .mainSection {
   padding-left: 30px;
   padding-right: 30px;
@@ -47,6 +58,8 @@ h2 {
   top: 0%;
   transform: translateY(-50%);
 }
+
+
 
 button, .headerNavElement button, input[type="submit"] {
   height: 100%;
@@ -115,4 +128,8 @@ form {
 
 .deleteClass {
   background-color: rgb(154, 14, 48);
+}
+
+.margin-left-5px {
+  margin-left: 5px;
 }

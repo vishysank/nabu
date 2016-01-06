@@ -16,8 +16,10 @@
     "jade": "~1.11.0",
     "moment": "^2.10.6",
     "morgan": "~1.6.1",
+    "passport": "^0.3.2",
+    "passport-github2": "^0.1.9",
     "pg": "^4.4.1",
-    "request": "^2.63.0",
+    "request": "^2.67.0",
     "serve-favicon": "~2.3.0",
     "swagger-ui": "^2.1.2"
   }
