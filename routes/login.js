@@ -7,7 +7,7 @@ router.get('/', function (req, res, next) {
     var authError
 
     if (req.session.githubOrgPermissionsStatus && req.session.githubOrgPermissionsStatus !== 204) {
-      authError = "You're Github Account does not belong to the Organization - " + process.env.GITHUB_ORG + ". Access is restricted to members of this organization"
+      authError = "Your Github Account does not belong to the Organization - " + process.env.GITHUB_ORG + ". Access is restricted to members of this organization"
     }
 
     res.render('login', {
