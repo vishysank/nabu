@@ -1,5 +1,5 @@
 * {
-  font-family: 'Alegreya Sans', sans-serif;
+  font-family: Helvetica, 'Alegreya Sans', sans-serif;
 }
 
 body {
@@ -59,8 +59,6 @@ iframe {
   transform: translateY(-50%);
 }
 
-
-
 button, .headerNavElement button, input[type="submit"] {
   height: 100%;
   border: 0;
@@ -70,6 +68,7 @@ button, .headerNavElement button, input[type="submit"] {
   border-radius: 5px;
   background-color: #68B684;
   color: white;
+  cursor: pointer;
 }
 
 .apiListSection {
