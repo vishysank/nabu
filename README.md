@@ -37,6 +37,7 @@ launchctl load ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist
 Load the nabu database using the following command :
 
 ```
+createdb nabu
 psql -d nabu -f nabu_db.sql
 ```
 
