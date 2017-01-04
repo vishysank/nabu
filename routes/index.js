@@ -33,7 +33,7 @@ router.get('/view/:id', function (req, res, next) {
   var id = req.params.id
 
   dbCalls.dbConnection(connectionString)
-  .then(dbCalls.dbQuery.bind(null, sql.select.apiAuth, [id]))
+  .then(dbCalls.dbQuery.bind(null, sql.select.apiDetailsAndAuth, [id]))
   .then(function (results) {
     res.render('view', {
       apiDetails: results[0]

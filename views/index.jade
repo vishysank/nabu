@@ -4,15 +4,15 @@ block content
   div.mainSection
     h1= "List of APIs with Documentation - "+apiList.length
     each val in apiList
-      div 
+      div
         div.apiListSection
           h2= val.api_name+" - managed by "+val.api_owner
-          p= "Added/Edited Last on - "+val.insert_datetime 
+          p= "Added/Edited Last on - "+val.insert_datetime
           p= val.api_desc
-          a(href="/edit/"+val.id)
-            button Edit this API
           a(href="/view/"+val.id)
             button View Documentation
+          a(href="/edit/"+val.id)
+            button Edit this API
           form(action="/del/"+val.id method="GET")
             input(type="hidden" name="apiName" value=val.api_name)
             input(type="hidden" name="apiOwner" value=val.api_owner)
