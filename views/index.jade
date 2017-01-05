@@ -2,18 +2,19 @@ extends layout
 
 block content
   div.mainSection
-    h1= "List of APIs with Documentation - "+apiList.length
+
+    h1(data-test-id="page-header")= "List of APIs with Documentation - "+apiList.length
     each val in apiList
       div
-        div.apiListSection
-          h2= val.api_name+" - managed by "+val.api_owner
-          p= "Added/Edited Last on - "+val.insert_datetime
-          p= val.api_desc
-          a(href="/view/"+val.id)
+        div.apiListSection(data-test-id="api-#{val.api_param}" data-test-prop="api-item")
+          h2(data-test-prop="api-title")= val.api_name+" - managed by "+val.api_owner
+          p(data-test-prop="last-edited")= "Added/Edited Last on - "+val.insert_datetime
+          p(data-test-prop="api-desc")= val.api_desc
+          a(href="/view/"+val.id data-test-prop="view-api")
             button View Documentation
-          a(href="/edit/"+val.id)
+          a(href="/edit/"+val.id data-test-prop="edit-api")
             button Edit this API
-          form(action="/del/"+val.id method="GET")
+          form(action="/del/"+val.id method="GET" data-test-prop="delete-api")
             input(type="hidden" name="apiName" value=val.api_name)
             input(type="hidden" name="apiOwner" value=val.api_owner)
             button.deleteClass(type="submit") Delete API Details

@@ -69,6 +69,11 @@ button, .headerNavElement button, input[type="submit"] {
   background-color: #68B684;
   color: white;
   cursor: pointer;
+  margin:0 5px;
+}
+
+button.cancel {
+  background-color: rgb(154, 14, 48);
 }
 
 .apiListSection {
@@ -92,12 +97,12 @@ img {
 label.newAPIFormElement {
   height: 100%;
   font-size: 24px;
-  width: 10%;
+  width: 15%;
   display: inline-block;
 }
 
 input[type='text'].newAPIFormElement, input[type='password'], textarea.newAPIFormElement {
-  width: 30%;
+  width: 40%;
   padding-left: 10px;
   margin: 0px;
   border: 0px;
