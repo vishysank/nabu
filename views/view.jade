@@ -2,6 +2,10 @@ extends layout
 
 block content
   div.mainSection.swagger-section
-    div#swagger-ui-container.swagger-ui-wrap
+    h2.page-header(data-test-id="page-header")= apiDetails.api_name
+    a(href="/" data-test-id="back-button")
+      button Back to List
+    hr
+    div#swagger-ui-container.swagger-ui-wrap(data-test-id="swagger-content")
     script.
       uiRender(!{JSON.stringify(apiDetails)})

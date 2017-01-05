@@ -2,12 +2,12 @@ extends layout
 
 block content
   div.mainSection
-    h1= "Delete API"
-    div 
+    h1(data-test-id="page-header")= "Delete API"
+    div
       div.apiListSection
-        h2= apiName+" - managed by "+apiOwner
-        p= "Are you sure you want to delete this API ?"
-        a(href="/")
+        h2(data-test-id="api-title")= apiName+" - managed by "+apiOwner
+        p(data-test-id="confirm-message")= "Are you sure you want to delete this API ?"
+        a(href="/" data-test-id="cancel-button")
           button Cancel
-        form(action="/del/"+id method="POST")
+        form(action="/del/"+id method="POST" data-test-id="submit-button")
           button.deleteClass(type="submit") Delete API Details
