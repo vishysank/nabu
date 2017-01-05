@@ -2,25 +2,27 @@ extends layout
 
 block content
   div.mainSection
-    h1 Edit API Details
-    form(action="/edit/"+apiDetails.id method="POST")
+    h1(data-test-id="page-header") Edit API Details
+    form(action="/edit/"+apiDetails.id method="POST" data-test-id="edit-form")
       if apiError
-        div.error= apiError
+        div.error(data-test-id="form-error")= apiError
       div
-        label.newAPIFormElement(for="apiName") Name : 
-        input.newAPIFormElement(type="text" name="apiName" id="apiName" value=apiDetails.api_name required)
+        label.newAPIFormElement(for="apiName") Name :
+        input.newAPIFormElement(type="text" name="apiName" id="apiName" data-test-id="api-name" value=apiDetails.api_name required)
       div
-        label.newAPIFormElement(for="apiOwner") Owner : 
-        input.newAPIFormElement(type="text" name="apiOwner" id="apiOwner" value=apiDetails.api_owner required)
+        label.newAPIFormElement(for="apiOwner") Owner :
+        input.newAPIFormElement(type="text" name="apiOwner" id="apiOwner" data-test-id="api-owner" value=apiDetails.api_owner required)
       div
-        label.newAPIFormElement(for="apiPath") Path : 
-        input.newAPIFormElement(type="text" name="apiPath" id="apiPath" value=apiDetails.api_path required)
+        label.newAPIFormElement(for="apiPath") Path :
+        input.newAPIFormElement(type="text" name="apiPath" id="apiPath" data-test-id="api-path" value=apiDetails.api_path required)
       div
-        label.newAPIFormElement(for="apiToken") Token : 
-        input.newAPIFormElement(type="text" name="apiToken" id="apiToken" value=apiDetails.api_token)
+        label.newAPIFormElement(for="apiToken") Token :
+        input.newAPIFormElement(type="text" name="apiToken" id="apiToken" data-test-id="api-token" value=apiDetails.api_token)
       div
         label.newAPIFormElement(for="apiDesc") Description :
-        textarea.newAPIFormElement(id="apiDesc" name="apiDesc" required)= apiDetails.api_desc
+        textarea.newAPIFormElement(id="apiDesc" name="apiDesc" data-test-id="api-desc" required)= apiDetails.api_desc
       div
-        input.newAPIFormElement(type="submit" value="Save Details")
-        
+        a(href="/" data-test-id="cancel-button")
+          button.cancel Cancel
+        input.newAPIFormElement(type="submit" value="Save Details" data-test-id="submit-button")
+

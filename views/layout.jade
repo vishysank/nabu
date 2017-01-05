@@ -18,24 +18,24 @@ html
     script(src='../swagger/lib/marked.js' type='text/javascript')
     script(src='/javascripts/uiRender.js' type='text/javascript')
   body
-    div.headerNav
-      a(href="http://swagger.io/" target="_blank")
+    div.headerNav(data-test-id="header")
+      a(href="http://swagger.io/" target="_blank" data-test-id="swagger-link")
         div.headerNavElement
           img(src='/images/swagger_icon.png' atl="Swagger icon")
-      a(href="https://en.wikipedia.org/wiki/Nabu" target="_blank")
+      a(href="https://en.wikipedia.org/wiki/Nabu" target="_blank" data-test-id="nabu-link")
         div.headerNavElement
           img(src='/images/nabu_icon.png' atl="Nabu icon")
-      a(href="https://github.com/vsankar7787/nabu" target="_blank")
+      a(href="https://github.com/vsankar7787/nabu" target="_blank" data-test-id="github-link")
         div.headerNavElement
           img(src='/images/github_icon.png' atl="Github Repo")
-      a(href="/")
-        div.headerNavElement 
-          h1 nabu
+      a(href="/" data-test-id="logo")
+        div.headerNavElement
+          h1(data-test-id="page-header") nabu
       if !loginButtonFlag
-        a(href="/user/logout")
+        a(href="/user/logout" data-test-id="user-logout")
           div.headerNavElement.right
             button Logout
-        a(href="/new/api")
+        a(href="/new/api" data-test-id="add-new-api")
           div.headerNavElement.right
             button Add an API
         div.headerNavElement.right
